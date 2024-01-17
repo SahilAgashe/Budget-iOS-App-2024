@@ -56,15 +56,39 @@
 		8105AC322B582EE800566EA5 /* Budget-App */ = {
 			isa = PBXGroup;
 			children = (
+				8105AC472B58302600566EA5 /* Application */,
+				8105AC492B58306B00566EA5 /* Supporting Files */,
+				8105AC482B58303E00566EA5 /* Controller */,
+			);
+			path = "Budget-App";
+			sourceTree = "<group>";
+		};
+		8105AC472B58302600566EA5 /* Application */ = {
+			isa = PBXGroup;
+			children = (
 				8105AC332B582EE800566EA5 /* AppDelegate.swift */,
 				8105AC352B582EE800566EA5 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		8105AC482B58303E00566EA5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
 				8105AC372B582EE800566EA5 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8105AC492B58306B00566EA5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
 				8105AC392B582EE800566EA5 /* Main.storyboard */,
 				8105AC3C2B582EE900566EA5 /* Assets.xcassets */,
 				8105AC3E2B582EE900566EA5 /* LaunchScreen.storyboard */,
 				8105AC412B582EE900566EA5 /* Info.plist */,
 			);
-			path = "Budget-App";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,7 +318,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4CJW76Y9FL;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Budget-App/Info.plist";
+				INFOPLIST_FILE = "Budget-App/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -322,7 +346,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4CJW76Y9FL;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Budget-App/Info.plist";
+				INFOPLIST_FILE = "Budget-App/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
