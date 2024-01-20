@@ -27,21 +27,24 @@ class BudgetCategoriesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Thank you god for this learning opportunity!!!")
-    
         setupUI()
     }
     
     // MARK: - Selectors
     @objc private func showAddBudgetCategory(_ sender: UIBarButtonItem) {
         print("DEBUG BudgetCategoriesTableViewController: called function is \(#function)")
+        let navController = UINavigationController(rootViewController: AddBudgetCategoryViewController(persistentContainer: persistentContainer))
+        present(navController, animated: true)
     }
     
     // MARK: - Helpers
     private func setupUI() {
-        let addBudgetCategoryButton = UIBarButtonItem(title: "Add Category", style: .plain, target: self, action: #selector(showAddBudgetCategory))
-        navigationItem.rightBarButtonItem = addBudgetCategoryButton
+        view.backgroundColor = .white
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Budget"
+        
+        let addBudgetCategoryButton = UIBarButtonItem(title: "Add Category", style: .plain, target: self, action: #selector(showAddBudgetCategory))
+        navigationItem.rightBarButtonItem = addBudgetCategoryButton
     }
 
 
