@@ -71,6 +71,7 @@ class BudgetCategoriesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: budgetTableViewCellIdentifier, for: indexPath)
+        cell.accessoryType = .disclosureIndicator
         let budgetCategory = fetchedResultsController?.object(at: indexPath)
         
         var config = cell.defaultContentConfiguration()
@@ -78,6 +79,13 @@ class BudgetCategoriesTableViewController: UITableViewController {
         cell.contentConfiguration = config
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let budgetCategory = fetchedResultsController?.object(at: indexPath) as? BudgetCategory
+        if let budgetCategory {
+            self.navigationController?.pushViewController(BudgetDetailViewController(persistentContainer: persistentContainer, budgetCategory: budgetCategory), animated: true)
+        }
     }
 
 }

@@ -15,6 +15,8 @@
 		8105AC402B582EE900566EA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8105AC3E2B582EE900566EA5 /* LaunchScreen.storyboard */; };
 		8105AC4C2B58345400566EA5 /* BudgetModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8105AC4A2B58345400566EA5 /* BudgetModel.xcdatamodeld */; };
 		810676132B64AFB10077E84A /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810676122B64AFB10077E84A /* Constant.swift */; };
+		810676162B64CEB60077E84A /* BudgetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810676152B64CEB60077E84A /* BudgetDetailViewController.swift */; };
+		810676182B64FB440077E84A /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810676172B64FB440077E84A /* Double+Extension.swift */; };
 		8117FC3C2B5C275700E17195 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8117FC3B2B5C275700E17195 /* String+Extension.swift */; };
 		81ACA6072B5BB85000CE3273 /* AddBudgetCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81ACA6062B5BB85000CE3273 /* AddBudgetCategoryViewController.swift */; };
 /* End PBXBuildFile section */
@@ -30,6 +32,8 @@
 		8105AC412B582EE900566EA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8105AC4B2B58345400566EA5 /* BudgetModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BudgetModel.xcdatamodel; sourceTree = "<group>"; };
 		810676122B64AFB10077E84A /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		810676152B64CEB60077E84A /* BudgetDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDetailViewController.swift; sourceTree = "<group>"; };
+		810676172B64FB440077E84A /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		8117FC3B2B5C275700E17195 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		81ACA6062B5BB85000CE3273 /* AddBudgetCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetCategoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,11 +68,11 @@
 		8105AC322B582EE800566EA5 /* Budget-App */ = {
 			isa = PBXGroup;
 			children = (
-				810676112B64AF8A0077E84A /* Helpers */,
 				8105AC472B58302600566EA5 /* Application */,
-				8105AC492B58306B00566EA5 /* Supporting Files */,
 				8105AC482B58303E00566EA5 /* Controller */,
 				8105AC4D2B583CF400566EA5 /* Core Data */,
+				810676112B64AF8A0077E84A /* Helpers */,
+				8105AC492B58306B00566EA5 /* Supporting Files */,
 			);
 			path = "Budget-App";
 			sourceTree = "<group>";
@@ -87,6 +91,7 @@
 			children = (
 				8105AC372B582EE800566EA5 /* BudgetCategoriesTableViewController.swift */,
 				81ACA6062B5BB85000CE3273 /* AddBudgetCategoryViewController.swift */,
+				810676152B64CEB60077E84A /* BudgetDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -131,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				8117FC3B2B5C275700E17195 /* String+Extension.swift */,
+				810676172B64FB440077E84A /* Double+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -208,8 +214,10 @@
 			files = (
 				810676132B64AFB10077E84A /* Constant.swift in Sources */,
 				8105AC4C2B58345400566EA5 /* BudgetModel.xcdatamodeld in Sources */,
+				810676182B64FB440077E84A /* Double+Extension.swift in Sources */,
 				8105AC382B582EE800566EA5 /* BudgetCategoriesTableViewController.swift in Sources */,
 				8105AC342B582EE800566EA5 /* AppDelegate.swift in Sources */,
+				810676162B64CEB60077E84A /* BudgetDetailViewController.swift in Sources */,
 				8117FC3C2B5C275700E17195 /* String+Extension.swift in Sources */,
 				81ACA6072B5BB85000CE3273 /* AddBudgetCategoryViewController.swift in Sources */,
 				8105AC362B582EE800566EA5 /* SceneDelegate.swift in Sources */,
