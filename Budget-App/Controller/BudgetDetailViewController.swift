@@ -24,13 +24,6 @@ class BudgetDetailViewController: UIViewController {
         return !name.isEmpty && !amount.isEmpty && amount.isNumeric && amount.isGreaterThan(0)
     }
     
-    private var transactionTotal: Double {
-        let transactions = fetchedResultsController?.fetchedObjects ?? []
-        return transactions.reduce(0) { partialResult, transaction in
-            partialResult + transaction.amount
-        }
-    }
-    
     private lazy var nameTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Transaction name"
@@ -183,7 +176,7 @@ class BudgetDetailViewController: UIViewController {
     }
     
     private func updateTransactionTotal() {
-        transactionsTotalLabel.text = transactionTotal.formatAsCurrency()
+        transactionsTotalLabel.text = budgetCategory.transactionTotal.formatAsCurrency()
     }
     
     private func resetForm() {

@@ -11,7 +11,7 @@ import CoreData
 class BudgetCategoriesTableViewController: UITableViewController {
 
     // MARK: - Properties
-    private let budgetTableViewCellIdentifier = "BudgetTableViewCell"
+    private let budgetTableViewCellIdentifier = "BudgetCategoryTableViewCell"
     private var persistentContainer: NSPersistentContainer
     private var fetchedResultsController: NSFetchedResultsController<BudgetCategory>?
     
@@ -44,7 +44,8 @@ class BudgetCategoriesTableViewController: UITableViewController {
         setupUI()
         
         // register cell
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: budgetTableViewCellIdentifier)
+        tableView.register(BudgetCategoryTableViewCell.self, forCellReuseIdentifier: budgetTableViewCellIdentifier)
+        tableView.rowHeight = 50
     }
     
     // MARK: - Selectors
@@ -70,13 +71,13 @@ class BudgetCategoriesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: budgetTableViewCellIdentifier, for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: budgetTableViewCellIdentifier, for: indexPath) as? BudgetCategoryTableViewCell else { return BudgetCategoryTableViewCell(style: .default, reuseIdentifier: budgetTableViewCellIdentifier) }
         cell.accessoryType = .disclosureIndicator
-        let budgetCategory = fetchedResultsController?.object(at: indexPath)
         
-        var config = cell.defaultContentConfiguration()
-        config.text = "\(budgetCategory?.name ?? "")"
-        cell.contentConfiguration = config
+        let budgetCategory = fetchedResultsController?.object(at: indexPath)
+        if let budgetCategory {
+            cell.configure(budgetCategory)
+        }
         
         return cell
     }
