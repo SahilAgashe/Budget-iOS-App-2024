@@ -21,6 +21,7 @@
 		8117FC3C2B5C275700E17195 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8117FC3B2B5C275700E17195 /* String+Extension.swift */; };
 		811E0DA62B6574E500E26D0F /* BudgetCategory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811E0DA52B6574E500E26D0F /* BudgetCategory+CoreDataClass.swift */; };
 		811E0DA92B65767800E26D0F /* NSSet+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811E0DA82B65767800E26D0F /* NSSet+Extension.swift */; };
+		811E0DAB2B6583BD00E26D0F /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811E0DAA2B6583BD00E26D0F /* UIViewController+Extension.swift */; };
 		81ACA6072B5BB85000CE3273 /* AddBudgetCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81ACA6062B5BB85000CE3273 /* AddBudgetCategoryViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		8117FC3B2B5C275700E17195 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		811E0DA52B6574E500E26D0F /* BudgetCategory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BudgetCategory+CoreDataClass.swift"; sourceTree = "<group>"; };
 		811E0DA82B65767800E26D0F /* NSSet+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSet+Extension.swift"; sourceTree = "<group>"; };
+		811E0DAA2B6583BD00E26D0F /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		81ACA6062B5BB85000CE3273 /* AddBudgetCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetCategoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,6 +156,7 @@
 				8117FC3B2B5C275700E17195 /* String+Extension.swift */,
 				810676172B64FB440077E84A /* Double+Extension.swift */,
 				811E0DA82B65767800E26D0F /* NSSet+Extension.swift */,
+				811E0DAA2B6583BD00E26D0F /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				810676132B64AFB10077E84A /* Constant.swift in Sources */,
+				811E0DAB2B6583BD00E26D0F /* UIViewController+Extension.swift in Sources */,
 				8105AC4C2B58345400566EA5 /* BudgetModel.xcdatamodeld in Sources */,
 				811E0DA62B6574E500E26D0F /* BudgetCategory+CoreDataClass.swift in Sources */,
 				810676182B64FB440077E84A /* Double+Extension.swift in Sources */,

@@ -65,7 +65,22 @@ class BudgetCategoriesTableViewController: UITableViewController {
         navigationItem.rightBarButtonItem = addBudgetCategoryButton
     }
     
-    // UITableViewDataSource delegate functions
+    private func deleteBudgetCategory(_ budgetCategory: BudgetCategory) {
+        persistentContainer.viewContext.delete(budgetCategory)
+        
+        do {
+            try persistentContainer.viewContext.save()
+        } catch {
+            // Show an alert message
+            showAlert(title: "Error", message: "Unable to save budget category.")
+        }
+    }
+    
+}
+
+// MARK: - UITableViewDataSource
+extension BudgetCategoriesTableViewController {
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (fetchedResultsController?.fetchedObjects ?? []).count
     }
@@ -82,13 +97,26 @@ class BudgetCategoriesTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let budgetCategory = fetchedResultsController?.object(at: indexPath) as? BudgetCategory
+            if let budgetCategory {
+                deleteBudgetCategory(budgetCategory)
+            }
+        }
+    }
+
+}
+
+// MARK: - UITableViewDelegate
+extension BudgetCategoriesTableViewController {
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let budgetCategory = fetchedResultsController?.object(at: indexPath) as? BudgetCategory
         if let budgetCategory {
             self.navigationController?.pushViewController(BudgetDetailViewController(persistentContainer: persistentContainer, budgetCategory: budgetCategory), animated: true)
         }
     }
-
 }
 
 // MARK: - NSFetchedResultsControllerDelegate
