@@ -24,6 +24,13 @@ class BudgetDetailViewController: UIViewController {
         return !name.isEmpty && !amount.isEmpty && amount.isNumeric && amount.isGreaterThan(0)
     }
     
+    private var transactionTotal: Double {
+        let transactions = fetchedResultsController?.fetchedObjects ?? []
+        return transactions.reduce(0) { partialResult, transaction in
+            partialResult + transaction.amount
+        }
+    }
+    
     private lazy var nameTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Transaction name"
@@ -78,6 +85,7 @@ class BudgetDetailViewController: UIViewController {
         return label
     }()
     
+    // MARK: - Init
     init(persistentContainer: NSPersistentContainer, budgetCategory: BudgetCategory) {
         self.persistentContainer = persistentContainer
         self.budgetCategory = budgetCategory
@@ -105,6 +113,7 @@ class BudgetDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        updateTransactionTotal()
     }
     
     // MARK: - Selectors
@@ -138,18 +147,17 @@ class BudgetDetailViewController: UIViewController {
         stackView.addArrangedSubview(amountTextField)
         stackView.addArrangedSubview(saveTransactionButton)
         stackView.addArrangedSubview(errorMessageLabel)
+        stackView.addArrangedSubview(transactionsTotalLabel)
         stackView.addArrangedSubview(tableView)
         view.addSubview(stackView)
         
         NSLayoutConstraint.activate([
-            nameTextField.widthAnchor.constraint(equalToConstant: 200),
-            amountTextField.widthAnchor.constraint(equalToConstant: 200),
             saveTransactionButton.centerXAnchor.constraint(equalTo: stackView.centerXAnchor),
-            
-            stackView.widthAnchor.constraint(equalTo: view.widthAnchor),
+
+            stackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.95),
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            
-            tableView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+
             tableView.heightAnchor.constraint(equalToConstant: 600)
         ])
     }
@@ -167,9 +175,29 @@ class BudgetDetailViewController: UIViewController {
         
         do {
             try persistentContainer.viewContext.save()
+            resetForm()
             tableView.reloadData()
         } catch {
             errorMessageLabel.text = "Unable to save transaction."
+        }
+    }
+    
+    private func updateTransactionTotal() {
+        transactionsTotalLabel.text = transactionTotal.formatAsCurrency()
+    }
+    
+    private func resetForm() {
+        nameTextField.text = ""
+        amountTextField.text = ""
+        errorMessageLabel.text = ""
+    }
+    
+    private func deleteTransaction(_ transaction: Transaction) {
+        persistentContainer.viewContext.delete(transaction)
+        do {
+            try persistentContainer.viewContext.save()
+        } catch {
+            errorMessageLabel.text = "Unable to delete transaction"
         }
     }
 }
@@ -193,6 +221,15 @@ extension BudgetDetailViewController: UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let transaction = fetchedResultsController?.object(at: indexPath) as? Transaction
+            if let transaction {
+                deleteTransaction(transaction)
+            }
+        }
+    }
+    
 }
 
 // MARK: - UITableViewDelegate
@@ -203,6 +240,7 @@ extension BudgetDetailViewController: UITableViewDelegate {
 // MARK: - NSFetchedResultsControllerDelegate
 extension BudgetDetailViewController: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        updateTransactionTotal()
         tableView.reloadData()
     }
 }
